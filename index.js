@@ -19,6 +19,7 @@ socket.on("connect", () => {
 });
 
 socket.on("start", (data) => {
+  clearBoard();
   homesymbol = data;
   homesymbol === "X" ? (guestsymbol = "O") : (guestsymbol = "X");
 
@@ -28,7 +29,6 @@ socket.on("start", (data) => {
 });
 
 socket.on("click", (data) => {
-  console.log("click received: " + data);
   let square = document.getElementById(data);
   square.value = guestsymbol;
   isTurnActive = true;
@@ -52,12 +52,6 @@ socket.on("tie", (data) => {
 socket.on("disconnected", (data) => {
   infoElem.innerHTML = "Other player disconnect, find a new game";
   isTurnActive = false;
-});
-
-socket.on("reset", () => {
-  clearBoard();
-  infoElem.innerHTML = "game starting, you are " + homesymbol + ", X starts";
-  if (homesymbol === "X") isTurnActive = true;
 });
 
 // Defining functions
