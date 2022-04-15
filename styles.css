@@ -1,10 +1,52 @@
+:root {
+  --font-size-symbol: 2rem;
+  --font-size: 1.2rem;
+  --box-size: 5rem;
+  --board-size: 16rem;
+}
+
 * {
-    margin: auto;
-    text-align: center;
-    font-size: 1rem;
+  margin: auto;
+  text-align: center;
+  font-size: var(--font-size);
+  color: white;
+  font-family: sans-serif;
+  background-color: rgb(120, 0, 0);
+}
+
+.board {
+  display: grid;
+  width: var(--board-size);
+  height: var(--board-size);
+  grid-template-columns: auto auto auto;
 }
 
 .box {
-   width: 2rem;
-   height: 2rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--box-size);
+  height: var(--box-size);
+  background-color: rgb(250, 250, 250);
+  color: black;
+  border-radius: 5px;
+  font-size: var(--font-size-symbol);
+}
+
+button {
+  outline: none;
+  border: 5px solid white;
+  width: var(--board-size);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+@media (max-width: 350px) {
+  :root {
+    --font-size-symbol: 1.5rem;
+    --font-size: 1rem;
+    --box-size: 3rem;
+    --board-size: 10rem;
+  }
 }

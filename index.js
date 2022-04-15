@@ -14,7 +14,7 @@ let isTurnActive = false;
 // Handling received websocket messages
 
 socket.on("connect", () => {
-  infoElem.innerHTML = "Waiting for another player";
+  infoElem.innerHTML = "Waiting for another player to connect";
   clearBoard();
 });
 
@@ -23,14 +23,18 @@ socket.on("start", (data) => {
   homesymbol = data;
   homesymbol === "X" ? (guestsymbol = "O") : (guestsymbol = "X");
 
-  infoElem.innerHTML = "game starting, you are " + homesymbol + ", X starts";
+  homesymbol === "X"
+    ? (infoElem.innerHTML = "Opponent found! You start")
+    : (infoElem.innerHTML = "Opponent found! Wait for opponent to start");
+
   resetElem.disabled = false;
-  if (data === "X") isTurnActive = true;
+  if (homesymbol === "X") isTurnActive = true;
 });
 
 socket.on("click", (data) => {
   let square = document.getElementById(data);
-  square.value = guestsymbol;
+  square.innerText = guestsymbol;
+  infoElem.innerHTML = "Your turn"
   isTurnActive = true;
 });
 
@@ -60,7 +64,8 @@ window.clicked = function clicked(id) {
   let square = document.getElementById(id);
   if (!isTurnActive || square.value) return;
   socket.emit("click", id);
-  square.value = homesymbol;
+  square.innerText = homesymbol;
+  infoElem.innerHTML = "Opponent's turn"
   isTurnActive = false;
 };
 
@@ -77,6 +82,6 @@ window.newGame = function newGame() {
 function clearBoard() {
   const board = document.getElementsByClassName("box");
   Array.from(board).forEach((square) => {
-    square.value = "";
+    square.innerText = "";
   });
 }
