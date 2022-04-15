@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module"src="index.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>tictactoe</title>
+  </head>
+  <body>
+    <h1>Tic-tac-toe game</h1>
+    <p id="info">Trying to connect.</p>
+    <br>
+
+    <input type="text" class="box" id="0" onclick="clicked(0)" readonly />
+    <input type="text" class="box" id="1" onclick="clicked(1)" readonly />
+    <input type="text" class="box" id="2" onclick="clicked(2)" readonly />
+    <br>
+    <input type="text" class="box" id="3" onclick="clicked(3)" readonly />
+    <input type="text" class="box" id="4" onclick="clicked(4)" readonly />
+    <input type="text" class="box" id="5" onclick="clicked(5)" readonly />
+    <br>
+    <input type="text" class="box" id="6" onclick="clicked(6)" readonly />
+    <input type="text" class="box" id="7" onclick="clicked(7)" readonly />
+    <input type="text" class="box" id="8" onclick="clicked(8)" readonly />
+    <br>
+    <br>
+    <button id="reset" onclick="resetGame()" disabled>Reset current game</button>
+    <button id="newgame" onclick="newGame()">Find a new game</button>
+  </body>
+</html>

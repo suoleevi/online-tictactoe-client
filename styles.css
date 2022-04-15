@@ -1,0 +1,10 @@
+* {
+    margin: auto;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.box {
+   width: 2rem;
+   height: 2rem; 
+}
